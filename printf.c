@@ -44,3 +44,14 @@ int _printf(const char *format, ...)
 
 	return (count);
 }
+
+int main(void)
+{
+	char ch = 'I';
+
+	char *str = "am loyal";
+
+	_printf("character:%c\n string:%s\n percent:%%\n" , ch, str);
+
+	return (0);
+}
