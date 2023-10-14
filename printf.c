@@ -51,7 +51,7 @@ int main(void)
 
 	char *str = "am loyal";
 
-	_printf("character:%c\n string:%s\n percent:%%\n" , ch, str);
+	_printf("character:%c\n string:%s\n percent:%\n" , ch, str,);
 
 	return (0);
 }
