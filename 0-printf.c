@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include <stdarg.h>
-
+#include "main.h"
 int _printf(const char *format, ...)
 {
+	char *str;
+	int value;
 	int count = 0;
 
 	va_list args;
@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			printf("%c", format[i]);
+			write(1, &format[i], 1);
 			count++;
 		}
 		else
@@ -21,37 +21,30 @@ int _printf(const char *format, ...)
 			switch (format[i + 1])
 			{
 				case 'c':
-					printf("%c", va_arg(args, int));
+					value = va_arg(args, int);
+
+					write(1, &value, 1);
 					count++;
 					break;
 				case 's':
-					printf("%s", va_arg(args, char *));
-					count++;
+					str = va_arg(args, char *);
+
+					write(1, str, strlen(str));
+					count += strlen(str);
 					break;
 				case '%':
-					printf("%%");
+					write(1, &format[i], 1);
 					count++;
 					break;
 				default:
-
-				printf("%%%c", format[i]);
-				count += 2;
+				write(1, &format[i], 1);
+				count++;
 			}
+			i++;
 		}
 	}
 
 	va_end(args);
 
 	return (count);
-}
-
-int main(void)
-{
-	char ch = 'I';
-
-	char *str = "am loyal";
-
-	_printf("character:%c\n string:%s\n percent:%\n" , ch, str,);
-
-	return (0);
 }

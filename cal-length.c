@@ -1,10 +1,23 @@
-#include <stdio.h>
+#include "main.h"
 
-void length(int ch)
+/**
+ * _length - convert int to string
+ * @n: function parameter
+ *
+ */
+void _length(int *n)
 {
-	int length = snprintf(NULL, 0, %d, ch) + 1;
-	char *byte = malloc(length);
-	char *str = snprintf(str_num, byte, %d, ch) - 1;
+	int length;
+	char *space;
 
-	write(str_num, length, "%d", ch);
+	length = snprintf(NULL, 0, "%d", *n) + 1;
+
+	space = malloc(length);
+
+	if (space == NULL)
+		return;
+
+	snprintf(space, length, "%d", *n);
+
+	write(1, space, length - 1);
 }

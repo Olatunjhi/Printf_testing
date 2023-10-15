@@ -1,8 +1,22 @@
-#include <stdarg.h>
-#include <stdio.h>
+#include "main.h"
 
+/**
+ * _printf - printf like function
+ * @format: mandatory parameter
+ * @...: variadic parameter
+ *
+ * Return: zero (0)
+ */
 int _printf(const char *format, ...)
 {
+	int value;
+	int *ptValue;
+
+	if (format == NULL)
+	{
+		return (1);
+	}
+
 	va_list args;
 
 	va_start(args, format);
@@ -11,17 +25,21 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			printf("%c", format[i]);
+			write(1, &format[i], 1);
 		}
 		else
 		{
 			if (format[i + 1] == 'd' || format[i + 1] == 'i')
 			{
-				printf("%d", va_arg(args, int));
+				value = va_arg(args, int);
+
+				ptValue = &value;
+
+				_length(ptValue);
 			}
 			else
 			{
-				printf("format does not exists");
+				write(1, &format[i], 1);
 			}
 			i++;
 		}
@@ -31,14 +49,3 @@ int _printf(const char *format, ...)
 
 	return (0);
 }
-
-int main(void)
-{
-	int dogAge = 40;
-	int petName = 30;
-
-	_printf("Dog Age: %d\n pet Name: %i \n", dogAge, petName);
-
-	return (0);
-}
-
