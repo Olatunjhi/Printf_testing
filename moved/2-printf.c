@@ -2,11 +2,13 @@
 
 int _printf(const char *format, ...)
 {
+	int i;
+	int j;
 	va_list args;
 
 	va_start(args, format);
 
-	for(int i = 0; format[i] != '\0'; i++)
+	for(i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
 		{
@@ -20,7 +22,7 @@ int _printf(const char *format, ...)
 
 				char binary[8];
 
-				for (int j = 6; j >= 0; j--)
+				for (j = 6; j >= 0; j--)
 				{
 					binary[6 - j] = (value & (1 << j)) ? '1' : '0';
 				}
@@ -33,15 +35,6 @@ int _printf(const char *format, ...)
 	}
 
 	va_end(args);
-
-	return (0);
-}
-
-int main(void)
-{
-	int num = 98;
-
-	_printf("Binary of 98 is: %b\n", num);
 
 	return (0);
 }

@@ -7,5 +7,10 @@
 #include <stdlib.h>
 #include <stdarg.h>
 int _printf(const char *format, ...);
-void _length(int *n);
+void _length(int n);
+void character(va_list args, int *count);
+void _string(va_list args, int *count);
+void percent(int *count);
+void binary(va_list args);
+void _integer(va_list args,int *count);
 #endif

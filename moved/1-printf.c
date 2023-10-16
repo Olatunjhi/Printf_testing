@@ -9,19 +9,20 @@
  */
 int _printf(const char *format, ...)
 {
+	int i;
 	int value;
 	int *ptValue;
+
+	va_list args;
 
 	if (format == NULL)
 	{
 		return (1);
 	}
 
-	va_list args;
-
 	va_start(args, format);
 
-	for(int i = 0; format[i] != '\0'; i++)
+	for(i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
 		{
