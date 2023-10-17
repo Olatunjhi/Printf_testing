@@ -4,23 +4,21 @@
  * binary - print out binary
  * @args: parameter
  */
-void binary(va_list args)
+void binary(va_list args, int *count, int digits)
 {
-	int value;
+	unsigned int value;
 	int i;
-	int j = 0;
-	char bite[8];
+	int j;
 
-	value = va_arg(args, int);
+	value = va_arg(args, unsigned int);
 
-	for (i = 6; i >= 0; i--)
+	for (i = digits - 1; i >= 0; i--)
 	{
-		bite[6 - j] = (value & (1 << j)) ? '1' : '0';
+		char Binary = ((value >> (digits - 1 - i) & 1)) + '0';
+
+		write(1, &Binary, 1);
+		(*count)++;
 	}
-
-	bite[7] = '\0';
-
-	write(1, bite, 7);
 }
 
 void _integer(va_list args, int *count)

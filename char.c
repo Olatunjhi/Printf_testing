@@ -33,7 +33,8 @@ void _string(va_list args, int *count)
  */
 void percent(int *count)
 {
-	int percent = '%';
+	char percent;
+
 	write(1, &percent, 1);
 	(*count)++;
 }

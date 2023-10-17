@@ -29,15 +29,20 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 					character(args, &count);
+					break;
 				case 's':
 					_string(args, &count);
+					break;
 				case '%':
 					percent(&count);
+					break;
 				case 'b':
-					binary(args);
+					binary(args, &count, 7);
+					break;
 				case 'd':
 				case 'i':
 					_integer(args, &count);
+					break;
 				default:
 				write(1, &format[i], 1);
 				count++;
