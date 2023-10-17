@@ -37,7 +37,7 @@ int _printf(const char *format, ...)
 					percent(&count);
 					break;
 				case 'b':
-					binary(args, &count, 7);
+					binary(args, &count);
 					break;
 				case 'd':
 				case 'i':

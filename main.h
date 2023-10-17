@@ -11,6 +11,6 @@ void _length(int n);
 void character(va_list args, int *count);
 void _string(va_list args, int *count);
 void percent(int *count);
-void binary(va_list args, int *count, int digits);
+void binary(va_list args, int *count);
 void _integer(va_list args,int *count);
 #endif
